@@ -39,6 +39,9 @@ router.post('/remittance', (req, res) => {
             if (err) return sqlerr(res, err);
             if (result.length === 0) return tw(res, 400, '用户不存在')
             //汇款，插入到remittance表中，并且修改lifebook中的yinmoney
+
+            //判断money是否超过了int类型的最大值
+            if (money > 2147483647) return tw(res, 400, '金额过大')
             let sql = `insert into remittance (relationship, uid, money, reason,create_time) values ('${relationship}', '${uid}', '${money}', '${reason}',now())`;
             db.query(sql, (err, result) => {
                 if (err) return sqlerr(res, err);

@@ -139,6 +139,23 @@ export default {
         this.$http.get('admin/statistics').then(res => {
             this.statistics = res.data.data
         })
+
+        this.$alert(`1. 此版本为演示版本，请勿修改admin的账号密码<br><br>
+        2. 本项目是本人在19年闲来无事写的一个玩具的2.0版本，在安全以及功能完整性方面并没有做太多考虑<br><br>
+        3. 本项目仅用于学习交流，禁止用于商业用途<br><br>
+        4. 作者联系方式：<br>
+        QQ：3216354195<br>
+        微信：moyc1966823<br>
+        抖音：墨羽晨（1966823w）<br>
+        个人主页：<a href="http://www.lsgsj.xyz" style="text-decoration: none; color: #3b86ff;" target="_blank">www.lsgsj.xyz</a> <br>
+        添加请备注来源
+        <br><br>
+        5.请各位在抖音、知乎、快手等平台发布相关本项目视频时，请@原作者，抖音（墨羽晨，1966823w）谢谢<br><br>
+        6. 某培训机构别给脸不要脸，你要是再拿我这个项目做文章，必起诉 <br><br>
+        7. 本域名【earthonline.club - 地球online俱乐部】出售，有意者联系`, '作者有话说', {
+                confirmButtonText: '确定',
+                dangerouslyUseHTMLString: true
+            }).catch(_ => {});
         //获取轮回变化
         this.$http.get('/admin/getReincarnationCount').then(res => {
             this.getReincarnationCount = res.data.data

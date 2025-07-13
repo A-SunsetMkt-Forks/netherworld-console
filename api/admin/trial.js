@@ -143,9 +143,10 @@ router.get('/getJudgementDetail', (req, res) => {
         const sql2 = `select a.nickname as judge_name,b.name as reaper_name from judgement as j left join user as a on j.judge_id = a.id left join reaper as b on j.reaper_id = b.id where j.uuid = '${uuid}'`;
         db.query(sql2, (err, data2) => {
             if (err) return sqlerr(res, err)
-            //获取生死簿中的信息
+              //获取生死簿中的信息
             let sql3 = `select * from lifebook where id = '${data[0].lifebook_id}'`;
             db.query(sql3, (err, data3) => {
+                if(data3.length == 0) return tw(res, 400, '对应生死簿不存在')
                 if (err) return sqlerr(res, err)
                 let senddata = {
                     ...data[0],

@@ -19,8 +19,12 @@
                     <el-button type="primary" @click="login">登录</el-button>
                 </el-form-item>
             </el-form>
-            <span class="info">此系统由墨羽晨开发-2023</span>
+            <span class="info">此系统由
+                <a href="http://www.lsgsj.xyz" class="xt_link" target="_blank">墨羽晨</a>
+              开发-2023</span>
         </div>
+        <span class="info">请各位在抖音、知乎、快手等平台发布相关本项目视频时，请@原作者，抖音（墨羽晨，1966823w）谢谢
+        </span>
     </div>
 </template>
 
@@ -40,9 +44,9 @@ export default {
     },
     methods: {
         reg() {
-            this.$alert('注册请联系管理员', '提示', {
+            this.$alert('演示版本系统，暂不支持注册，请前往www.lsgsj.xyz获取作者联系方式获取账号密码', '提示', {
                 confirmButtonText: '确定'
-            });
+            }).catch(_ => {});
         },
         login() {
             this.$refs.loginForm.validate(async (valid) => {
@@ -85,6 +89,11 @@ export default {
     position: absolute;
     bottom: 12px;
     left: 0;
+}
+
+.xt_link{
+    color: #3b86ff;
+    text-decoration: none;
 }
 
 .main {

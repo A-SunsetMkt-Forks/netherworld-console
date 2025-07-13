@@ -5,7 +5,14 @@ var { expressjwt } = require("express-jwt");
 
 
 //配置跨域
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    // 允许所有来源，或者根据需要限制特定来源
+    if (!origin) return callback(null, true);
+    callback(null, true);
+  },
+  credentials: true // 允许携带凭证
+}));
 
 //配置解析token的中间件
 app.use(expressjwt({ secret: 'moyc^_^', algorithms: ['HS256'] }).unless({ path: [/\/api\//, /\/public\//] }));
